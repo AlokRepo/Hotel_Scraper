@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Scraper - Find the Best Deals</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff7eb3;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #ff5680;
+        }
+
+        .loading {
+            display: none;
+            font-size: 16px;
+            margin-top: 10px;
+            animation: fadein 1s infinite alternate;
+        }
+
+        @keyframes fadein {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Collapsible Section */
+        .collapsible {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 15px;
+            text-decoration: underline;
+        }
+
+        .platform-list {
+            display: none;
+            text-align: left;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .platform-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .platform-list li {
+            padding: 5px 0;
+        }
+    </style>
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+
+        function togglePlatforms() {
+            var list = document.getElementById('platformList');
+            if (list.style.display === 'block') {
+                list.style.display = 'none';
+            } else {
+                list.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Hotel Scraper</h1>
+        <p>Find the best deals on top hotel booking platforms</p>
+        
+        <form action="/scrape" method="POST" onsubmit="showLoading()">
+            <input type="text" name="url" placeholder="Enter hotel booking URL..." required>
+            <button type="submit">Scrape & Download</button>
+        </form>
+
+        <div id="loading" class="loading">⏳ Scraping in progress...</div>
+        
+        <button class="collapsible" onclick="togglePlatforms()">Show Supported Platforms</button>
+        <div id="platformList" class="platform-list">
+            <ul>
+                <li>✅ Booking.com</li>
+                <li>✅ Trivago</li>
+                <li>✅ Expedia</li>
+                <li>✅ Hotels.com</li>
+                <li>✅ Agoda</li>
+                <li>✅ Airbnb</li>
+                <li>✅ MakeMyTrip</li>
+                <li>✅ Yatra</li>
+                <li>✅ Goibibo</li>
+                <li>✅ OYO</li>
+            </ul>
+        </div>
+
+        <div class="footer">Made with ❤️ by You</div>
+    </div>
+</body>
+</html>
